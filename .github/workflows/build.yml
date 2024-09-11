@@ -1,0 +1,15 @@
+name: Build
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: gradle:8.10.1-jdk22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        uses: ./.github/actions/gradle
+        with:
+          command: build

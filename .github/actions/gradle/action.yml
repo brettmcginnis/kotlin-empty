@@ -1,0 +1,17 @@
+name: Gradle Wrapper
+description: Action for Gradle Commands
+
+inputs:
+  command:
+    description: 'Gradle Command to Run [eg tasks]'
+    required: true
+    default: 'tasks'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Gradle Wrapped Invocation
+      run: ./gradlew ${{ inputs.command }}
+      shell: bash
+      env:
+        INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
